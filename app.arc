@@ -1,5 +1,5 @@
 @app
-portfolio-63a1
+portfolio
 
 @aws
 runtime nodejs18.x
