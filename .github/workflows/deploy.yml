@@ -28,6 +28,11 @@ jobs:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+        version: 8
+
       - name: ⎔ Setup node
         uses: actions/setup-node@v4
         with:
@@ -36,10 +41,10 @@ jobs:
           node-version: 18
 
       - name: 📥 Install deps
-        run: npm install
+        run: pnpm install
 
       - name: 🔬 Lint
-        run: npm run lint
+        run: pnpm run lint
 
   typecheck:
     name: ʦ TypeScript
@@ -48,6 +53,11 @@ jobs:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+        version: 8
+
       - name: ⎔ Setup node
         uses: actions/setup-node@v4
         with:
@@ -56,10 +66,10 @@ jobs:
           node-version: 18
 
       - name: 📥 Install deps
-        run: npm install
+        run: pnpm install
 
       - name: 🔎 Type check
-        run: npm run typecheck --if-present
+        run: pnpm run typecheck --if-present
 
   vitest:
     name: ⚡ Vitest
@@ -68,6 +78,11 @@ jobs:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+        version: 8
+
       - name: ⎔ Setup node
         uses: actions/setup-node@v4
         with:
@@ -76,10 +91,10 @@ jobs:
           node-version: 18
 
       - name: 📥 Install deps
-        run: npm install
+        run: pnpm install
 
       - name: ⚡ Run vitest
-        run: npm run test -- --coverage
+        run: pnpm run test -- --coverage
 
   cypress:
     name: ⚫️ Cypress
@@ -90,6 +105,11 @@ jobs:
 
       - name: 🏄 Copy test env vars
         run: cp .env.example .env
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+        version: 8
 
       - name: ⎔ Setup node
         uses: actions/setup-node@v4
@@ -120,6 +140,11 @@ jobs:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+        version: 8
+
       - name: ⎔ Setup node
         uses: actions/setup-node@v4
         with:
@@ -138,6 +163,10 @@ jobs:
 
       - name: 📥 Install deps
         run: pnpm install
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+        version: 8
 
       - name: 🏗 Build
         run: pnpm run build
