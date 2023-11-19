@@ -98,16 +98,21 @@ jobs:
           cache-dependency-path: ./package.json
           node-version: 18
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
       - name: 📥 Install deps
-        run: npm install
+        run: pnpm install
 
       - name: 🏗 Build
-        run: npm run build
+        run: pnpm run build
 
       - name: 🌳 Cypress run
         uses: cypress-io/github-action@v6
         with:
-          start: npm run dev
+          start: pnpm run dev
           wait-on: "http://localhost:8811"
         env:
           PORT: "8811"
@@ -127,6 +132,11 @@ jobs:
           cache-dependency-path: ./package.json
           node-version: 18
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
       - name: 👀 Env
         run: |
           echo "Event name: ${{ github.event_name }}"
@@ -137,13 +147,13 @@ jobs:
           VER=`npm --version`; echo "npm ver:    $VER"
 
       - name: 📥 Install deps
-        run: npm install
+        run: pnpm install
 
       - name: 🏗 Build
-        run: npm run build
+        run: pnpm run build
 
       - name: 🛠 Install Arc
-        run: npm i -g @architect/architect
+        run: pnpm i -g @architect/architect
 
       - name: 🚀 Staging Deploy
         if: github.ref == 'refs/heads/dev'
